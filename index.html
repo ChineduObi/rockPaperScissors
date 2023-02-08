@@ -17,41 +17,83 @@
         function compare(playerSelection, computerSelection) {
             playerSelection = playerSelection.toUpperCase()
             if (playerSelection == "ROCK" && computerSelection == "PAPER") {
-                console.log("You lose, Paper beats Rock.")
+                return ("You lose, Paper beats Rock.")
             }
 
             else if (playerSelection == "SCISSORS" && computerSelection == "PAPER") {
-                console.log("You Win, Scissors beats Paper.")
+                return ("You Win, Scissors beats Paper.")
             }
 
             else if (playerSelection == "SCISSORS" && computerSelection == "ROCK") {
-                console.log("You lose, Rock beats Scissors.")
+                return ("You lose, Rock beats Scissors.")
             }
 
             else if (playerSelection == "PAPER" && computerSelection == "ROCK") {
-                console.log("You Win, Paper beats Rock.")
+                return ("You Win, Paper beats Rock.")
 
             }
 
             else if (playerSelection == "ROCK" && computerSelection == "SCISSORS") {
-                console.log("You Win, Rock beats Scissors.")
+                return ("You Win, Rock beats Scissors.")
 
             }
 
             else if (playerSelection == "PAPER" && computerSelection == "SCISSORS") {
-                console.log("You lose, Scissors beats Paper.")
+                return ("You lose, Scissors beats Paper.")
             }
 
             else if (playerSelection == computerSelection) {
-                console.log("You Tie!!!")
+                return ("You Tie!!!")
             }
-        
+            
+            else {
+                console.log("There is an error.")
+            }
         }
 
-        const computerSelection = getComputerChoice();
-        const playerSelection = "rock";
 
-        console.log(compare(playerSelection, computerSelection))
+    function game() {
+        wins = 0
+        loses = 0
+        ties = 0
+        for (let i=0; i<5; i++) {
+            const computerSelection = getComputerChoice();
+            const playerSelection = prompt("Rock paper Scissors, SHOOT!!! ");
+            res = compare(playerSelection, computerSelection)
+            console.log(res);
+
+            if (res == "You Win, Rock beats Scissors.") {
+                wins += 1
+            }
+
+            else if (res == "You lose, Scissors beats Paper.") {
+                loses += 1
+            }
+
+            else {
+                ties += 1
+            }
+
+        }
+        
+        if (wins > loses) {
+            console.log("You win this game!!!")
+        }
+
+        else if (wins < loses) {
+            console.log("You lose this game!!!")
+        }
+
+        else if (wins == loses) {
+            console.log("You tied for this game!!!")
+        }
+
+        else {
+            console.log("Error.")
+        }
+    }
+
+    game()
 
     </script>
 </body>
