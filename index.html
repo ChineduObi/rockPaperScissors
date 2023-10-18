@@ -8,11 +8,14 @@
 </head>
 <body>
     <div id="container">
-        <button id = 'Rock'> </button>
-        <button id = 'Paper'> </button>
-        <button id = 'Scissors'> </button>
+        <button id = 'Rock'> Rock</button>
+        <button id = 'Paper'>Paper </button>
+        <button id = 'Scissors'> Scissors </button>
     </div>
 
+    <div id="results"> 
+        
+    </div>
     <script>
         // buttons is a node list. It looks and acts much like an array.
         const buttons = document.querySelectorAll('button');
@@ -22,9 +25,11 @@
 
         // and for each one we add a 'click' listener
         button.addEventListener('click', () => {
-            alert(button.id);
+            comp = getComputerChoice()
+            playRound(button.id, comp);
         });
         });
+        // const results = document.querySelectorAll('#results');
 
         function getComputerChoice() {
             const choice = ["ROCK", "PAPER", "SCISSORS"]
@@ -34,38 +39,39 @@
         
         function playRound(playerSelection, computerSelection) {
             playerSelection = playerSelection.toUpperCase()
+            const results = document.querySelector('#results');
             if (playerSelection == "ROCK" && computerSelection == "PAPER") {
-                return ("You lose, Paper beats Rock.")
+                results.textContent= "You lose, Paper beats Rock."
             }
 
             else if (playerSelection == "SCISSORS" && computerSelection == "PAPER") {
-                return ("You Win, Scissors beats Paper.")
+                results.textContent = "You Win, Scissors beats Paper."
             }
 
             else if (playerSelection == "SCISSORS" && computerSelection == "ROCK") {
-                return ("You lose, Rock beats Scissors.")
+                results.textContent = "You lose, Rock beats Scissors."
             }
 
             else if (playerSelection == "PAPER" && computerSelection == "ROCK") {
-                return ("You Win, Paper beats Rock.")
+                results.textContent = "You Win, Paper beats Rock."
 
             }
 
             else if (playerSelection == "ROCK" && computerSelection == "SCISSORS") {
-                return ("You Win, Rock beats Scissors.")
+                results.textContent = "You Win, Rock beats Scissors."
 
             }
 
             else if (playerSelection == "PAPER" && computerSelection == "SCISSORS") {
-                return ("You lose, Scissors beats Paper.")
+                results.textContent = "You lose, Scissors beats Paper." 
             }
 
             else if (playerSelection == computerSelection) {
-                return ("You Tie!!!")
+                results.textContent = "You Tie!!!"
             }
             
             else {
-                console.log("There is an error.")
+                results.textContent("There is an error.")
             }
         }
 
