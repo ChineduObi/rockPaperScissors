@@ -19,14 +19,26 @@
     <script>
         // buttons is a node list. It looks and acts much like an array.
         const buttons = document.querySelectorAll('button');
-
+        let you = 0;
+        let computer = 0;
         // we use the .forEach method to iterate through each button
         buttons.forEach((button) => {
 
         // and for each one we add a 'click' listener
         button.addEventListener('click', () => {
             comp = getComputerChoice()
-            playRound(button.id, comp);
+            if (you == 5 ){
+                results.textContent= "You Win!! Game Over"
+
+            }
+
+            else if (comp == 5){
+                results.textContent = "You lose!! Game Over"
+            }
+
+            else {
+                playRound(button.id, comp);
+            }
         });
         });
         // const results = document.querySelectorAll('#results');
@@ -37,37 +49,42 @@
             return choice[x]
         }
         
+
         function playRound(playerSelection, computerSelection) {
             playerSelection = playerSelection.toUpperCase()
             const results = document.querySelector('#results');
             if (playerSelection == "ROCK" && computerSelection == "PAPER") {
-                results.textContent= "You lose, Paper beats Rock."
+                computer +=1
+                results.textContent= "You lose, Paper beats Rock." + "\n" + "you: " + you.toString() + " computer: " + computer.toString()
             }
 
             else if (playerSelection == "SCISSORS" && computerSelection == "PAPER") {
-                results.textContent = "You Win, Scissors beats Paper."
+                you += 1
+                results.textContent = "You Win, Scissors beats Paper." + "\n" + "you: " + you.toString() + " computer: " + computer.toString()   
             }
 
             else if (playerSelection == "SCISSORS" && computerSelection == "ROCK") {
-                results.textContent = "You lose, Rock beats Scissors."
+                computer += 1
+                results.textContent = "You lose, Rock beats Scissors." + "\n" + "you: " + you.toString() + " computer: " + computer.toString()
             }
 
             else if (playerSelection == "PAPER" && computerSelection == "ROCK") {
-                results.textContent = "You Win, Paper beats Rock."
-
+                you += 1
+                results.textContent = "You Win, Paper beats Rock." + "\n" + "you: " + you.toString() + " computer: " + computer.toString()
             }
 
             else if (playerSelection == "ROCK" && computerSelection == "SCISSORS") {
-                results.textContent = "You Win, Rock beats Scissors."
-
+                you += 1
+                results.textContent = "You Win, Rock beats Scissors." + "\n" + "you: " + you.toString() + " computer: " + computer.toString()
             }
 
             else if (playerSelection == "PAPER" && computerSelection == "SCISSORS") {
-                results.textContent = "You lose, Scissors beats Paper." 
+                computer += 1
+                results.textContent = "You lose, Scissors beats Paper." + "\n" + "you: " + you.toString() + " computer: " + computer.toString()    
             }
 
             else if (playerSelection == computerSelection) {
-                results.textContent = "You Tie!!!"
+                results.textContent = "You Tie!!!"  + "\n" + "you: " + you.toString() + " computer: " + computer.toString()
             }
             
             else {
